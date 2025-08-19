@@ -4,9 +4,10 @@ import styles from "../styles/style.module.css";
 function TorneiAttivi() {
   const [tornei, setTornei] = useState([]);
   const [errore, setErrore] = useState('');
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/tornei-attivi')
+    fetch(`${apiUrl}/api/tornei/tornei-attivi`)
       .then(res => res.json())
       .then(data => setTornei(data))
       .catch(() => setErrore('Errore nel caricamento dei tornei.'));

@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "torneo-frontend",
+			"path": "../../torneo-frontend"
+		}
+	],
+	"settings": {}
+}

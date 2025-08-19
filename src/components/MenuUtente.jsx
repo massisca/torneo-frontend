@@ -3,6 +3,7 @@ import styles from "../styles/style.module.css";
 
 function MenuUtente({ onLoginClick }) {
   const [ruolo, setRuolo] = useState(localStorage.getItem('cod_ruolo'));
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleLogout = () => {
     localStorage.removeItem('cod_ruolo');
