@@ -9,7 +9,15 @@ function TorneiAttivi() {
   useEffect(() => {
     fetch(`${apiUrl}/api/tornei/tornei-attivi`)
       .then(res => res.json())
-      .then(data => setTornei(data))
+      .then(data => {
+      if (Array.isArray(data)) {
+         setTornei(data);
+      } else {
+         setTornei([]);
+       setErrore(data.message || 'Nessun torneo attivo trovato.');
+     }
+})
+
       .catch(() => setErrore('Errore nel caricamento dei tornei.'));
   }, []);
 
