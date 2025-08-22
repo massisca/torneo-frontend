@@ -5,6 +5,8 @@ import banner from './assets/banner.jpg';
 import background from './assets/background.jpg';
 import LoginModal from './components/LoginModal';
 import TorneiAttivi from './components/TorneiAttivi';
+import Parametri from './pages/Parametri';
+
 
 function Home() {
   return (
@@ -78,7 +80,6 @@ function App() {
   </ul>
 </nav>
 
-
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -87,6 +88,7 @@ function App() {
           <Route path="/iscrizioni" element={<Iscrizioni />} />
           <Route path="/registrazione" element={<Registrazione />} />
           <Route path="/recupero" element={<Recupero />} />
+          <Route path="/parametri" element={<Parametri />} /> 
         </Routes>
       </main>
 
