@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Box } from '@mui/material';
+import {
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Box,
+  Heading,
+} from '@chakra-ui/react';
 import GestioneRuoli from '../components/GestioneRuoli';
 import GestioneFasi from '../components/GestioneFasi';
 import GestionePunti from '../components/GestionePunti';
@@ -7,33 +15,30 @@ import GestioneCampi from '../components/GestioneCampi';
 import GestioneFormule from '../components/GestioneFormule';
 
 function Parametri() {
-  const [tabIndex, setTabIndex] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setTabIndex(newValue);
-  };
-
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Parametri</h2>
-      <Box sx={{ width: '100%', marginTop: 2 }}>
-        <Tabs value={tabIndex} onChange={handleChange} centered>
-          <Tab label="Ruoli" />
-          <Tab label="Fasi" />
-          <Tab label="Punti" />
-          <Tab label="Campi" />
-          <Tab label="Formule" />
-        </Tabs>
+    <Box p={8}>
+      <Heading as="h2" size="lg" mb={6}>
+        Parametri
+      </Heading>
 
-        <Box sx={{ marginTop: 4 }}>
-          {tabIndex === 0 && <GestioneRuoli />}
-          {tabIndex === 1 && <GestioneFasi />}
-          {tabIndex === 2 && <GestionePunti />}
-          {tabIndex === 3 && <GestioneCampi />}
-          {tabIndex === 4 && <GestioneFormule />}
-        </Box>
-      </Box>
-    </div>
+      <Tabs isFitted variant="enclosed">
+        <TabList>
+          <Tab>Ruoli</Tab>
+          <Tab>Fasi</Tab>
+          <Tab>Punti</Tab>
+          <Tab>Campi</Tab>
+          <Tab>Formule</Tab>
+        </TabList>
+
+        <TabPanels mt={4}>
+          <TabPanel><GestioneRuoli /></TabPanel>
+          <TabPanel><GestioneFasi /></TabPanel>
+          <TabPanel><GestionePunti /></TabPanel>
+          <TabPanel><GestioneCampi /></TabPanel>
+          <TabPanel><GestioneFormule /></TabPanel>
+        </TabPanels>
+      </Tabs>
+    </Box>
   );
 }
 
