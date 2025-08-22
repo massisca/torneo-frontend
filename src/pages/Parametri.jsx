@@ -147,4 +147,5 @@ const Parametri = () => {
   );
 };
 
+
 export default Parametri;
