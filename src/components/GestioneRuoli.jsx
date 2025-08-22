@@ -1,17 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogTitle,
-  TextField, Table, TableBody, TableCell, TableHead, TableRow
-} from '@mui/material';
+  Button,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Box,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Input,
+  VStack,
+} from '@chakra-ui/react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 const GestioneRuoli = () => {
   const [ruoli, setRuoli] = useState([]);
-  const [open, setOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({ cod_ruolo: '', nome_ruolo: '' });
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const fetchRuoli = async () => {
     try {
@@ -34,11 +50,11 @@ const GestioneRuoli = () => {
       setFormData({ cod_ruolo: '', nome_ruolo: '' });
       setEditMode(false);
     }
-    setOpen(true);
+    onOpen();
   };
 
   const handleClose = () => {
-    setOpen(false);
+    onClose();
     setFormData({ cod_ruolo: '', nome_ruolo: '' });
     setEditMode(false);
   };
@@ -71,43 +87,64 @@ const GestioneRuoli = () => {
   };
 
   return (
-    <div>
+    <Box>
       <ToastContainer />
-      <Button variant="contained" color="primary" onClick={() => handleOpen()}>
+      <Button colorScheme="blue" onClick={() => handleOpen()}>
         Aggiungi Ruolo
       </Button>
 
-      <Table sx={{ marginTop: 2 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Codice</TableCell>
-            <TableCell>Nome</TableCell>
-            <TableCell>Azioni</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+      <Table mt={4}>
+        <Thead>
+          <Tr>
+            <Th>Codice</Th>
+            <Th>Nome</Th>
+            <Th>Azioni</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
           {ruoli.map((ruolo) => (
-            <TableRow key={ruolo.cod_ruolo}>
-              <TableCell>{ruolo.cod_ruolo}</TableCell>
-              <TableCell>{ruolo.nome_ruolo}</TableCell>
-              <TableCell>
-                <Button onClick={() => handleOpen(ruolo)}>Modifica</Button>
-                <Button color="error" onClick={() => handleDelete(ruolo.cod_ruolo)}>Elimina</Button>
-              </TableCell>
-            </TableRow>
+            <Tr key={ruolo.cod_ruolo}>
+              <Td>{ruolo.cod_ruolo}</Td>
+              <Td>{ruolo.nome_ruolo}</Td>
+              <Td>
+                <Button size="sm" mr={2} onClick={() => handleOpen(ruolo)}>Modifica</Button>
+                <Button size="sm" colorScheme="red" onClick={() => handleDelete(ruolo.cod_ruolo)}>Elimina</Button>
+              </Td>
+            </Tr>
           ))}
-        </TableBody>
+        </Tbody>
       </Table>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{editMode ? 'Modifica Ruolo' : 'Nuovo Ruolo'}</DialogTitle>
-        <DialogContent>
-          <TextField
-            label="Codice Ruolo"
-            fullWidth
-            margin="dense"
-            value={formData.cod_ruolo}
-            onChange={(e) => setFormData({ ...formData, cod_ruolo: e.target.value })}
-            disabled={editMode}
-          />
-          <TextField
+      <Modal isOpen={isOpen} onClose={handleClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{editMode ? 'Modifica Ruolo' : 'Nuovo Ruolo'}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <VStack spacing={4}>
+              <Input
+                placeholder="Codice Ruolo"
+                value={formData.cod_ruolo}
+                onChange={(e) => setFormData({ ...formData, cod_ruolo: e.target.value })}
+                isDisabled={editMode}
+              />
+              <Input
+                placeholder="Nome Ruolo"
+                value={formData.nome_ruolo}
+                onChange={(e) => setFormData({ ...formData, nome_ruolo: e.target.value })}
+              />
+            </VStack>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
+              Salva
+            </Button>
+            <Button onClick={handleClose}>Annulla</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </Box>
+  );
+};
+
+export default GestioneRuoli;
