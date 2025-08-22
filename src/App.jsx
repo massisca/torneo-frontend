@@ -12,7 +12,7 @@ function Home() {
   return (
     <>
       <h2>Benvenuto nel gestionale tornei</h2>
-      <TorneiAttivi />
+       {/* <TorneiAttivi /> */}
     </>
   );
 }
