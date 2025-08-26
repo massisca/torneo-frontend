@@ -1,0 +1,104 @@
+
+/* src/styles/LoginModal.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: url('/popup-bg.jpg') center center no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(4px);
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 18px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.modal-content h2 {
+  margin-bottom: 8px;
+  font-size: 22px;
+  color: black;
+}
+
+.modal-subtitle {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: black;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+.modal-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #e30613;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  margin-top: 4px;
+  display: block;
+}
+
+.modal-button:hover {
+  background-color: #c00010;
+}
+
+.modal-link {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}

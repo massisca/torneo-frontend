@@ -1,13 +1,13 @@
-// torneo-frontend/src/pages/Iscrizioni.jsx
+// torneo-frontend/src/pages/Utenti.jsx
 import React from 'react';
 
-function Iscrizioni() {
+function Utenti() {
   return (
     <div style={{ padding: '2rem' }}>
-      <h2>Iscrizioni</h2>
+      <h2>Utenti</h2>
       <p>🚧 Pagina in costruzione!</p>
     </div>
   );
 }
 
-export default Iscrizioni;
+export default Utenti;

@@ -1,12 +1,13 @@
+// torneo-frontend/src/pages/Contatti.jsx
 import React from 'react';
 
-function Tornei() {
+function Contatti() {
   return (
     <div style={{ padding: '2rem' }}>
-      <h2>Tornei</h2>
+      <h2>Contatti</h2>
       <p>🚧 Pagina in costruzione!</p>
     </div>
   );
 }
 
-export default Tornei;
+export default Contatti;
