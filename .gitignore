@@ -5,5 +5,4 @@ node_modules/
 server pc*
 server.render*
 dist/
-public/index.html
 index.html
