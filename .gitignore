@@ -6,4 +6,3 @@ server pc*
 server.render*
 dist/
 index.html
-public/index.html
