@@ -4,11 +4,10 @@
   "description": "Frontend React con Vite per il progetto Torneo",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm ci && vite build",
     "preview": "vite preview",
-    "vercel-build": "npm ci && npm run build",
-    "postinstall": "echo 'Postinstall hook attivo'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "echo 'Postinstall hook attivo'"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.25.0",
@@ -24,7 +23,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.8.2",
     "react-toastify": "^11.0.5",
-    "vite": "^4.5.0"  // 🔁 Spostato da devDependencies
+    "vite": "^4.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0"
@@ -39,5 +38,8 @@
   "bugs": {
     "url": "https://github.com/massisca/torneo-frontend/issues"
   },
-  "homepage": "https://github.com/massisca/torneo-frontend#readme"
+  "homepage": "https://github.com/massisca/torneo-frontend#readme",
+  "engines": {
+    "node": ">=18"
+  }
 }
